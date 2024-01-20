@@ -30,5 +30,7 @@ def new_files(drive: dict, local: dict) -> None:
                 context_logger.error(f'Не удалось загрузить файл {file}. Недостаточно свободного места.')
             elif answer == 413:
                 context_logger.error(f'Не удалось загрузить файл {file}. Файл слишком большой.')
+            elif answer == 423:
+                context_logger.error(f'Не удалось загрузить файл {file}. Ведутся технические работы.')
             else:
                 context_logger.error(f'Не удалось загрузить файл {file}. Ошибка соединения.')
