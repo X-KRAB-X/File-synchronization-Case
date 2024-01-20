@@ -9,4 +9,7 @@ def get_url(file_name, overwrite=False):
                                      'Authorization': TOKEN}
                             ).json()
 
-    return response['href']
+    if response.get('href'):
+        return response['href']
+    else:
+        return 404
