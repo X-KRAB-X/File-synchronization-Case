@@ -1,6 +1,6 @@
 import os
 from config_data.config import FILE_PATH
-from get_files import get_files_list
+from local_files.get_files import get_files_list
 import hashlib
 
 
