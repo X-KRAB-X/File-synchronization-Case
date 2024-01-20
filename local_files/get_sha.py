@@ -1,10 +1,17 @@
+"""Файл для высчитывания хеш-сумм всех локальных файлов."""
+
 import os
+import hashlib
 from config_data.config import FILE_PATH
 from local_files.get_files import get_files_list
-import hashlib
 
 
-def get_sha_dict():
+def get_sha_dict() -> dict:
+    """
+    Функция, высчитывающая хеш-сумму каждого файла.
+
+    :return: Словарь, содержащий список файлов в виде ключей и их хеш-суммы в виде значений.
+    """
     files = get_files_list()
     hash_dict = {}
 

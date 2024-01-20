@@ -1,10 +1,22 @@
-from config_data.config import FILE_PATH
+"""Файл для загрузки нового файла в облачное хранилище."""
+
 import os
+from config_data.config import FILE_PATH
 from api.load import load
 from logs.logs import context_logger
 
 
-def new_files(drive, local) -> None:
+def new_files(drive: dict, local: dict) -> None:
+    """
+    Функция, загружающая новый файл в облачное хранилище.
+    Получает на вход словари с файлами.
+    Если списки файлов равны, фунции нет смысла работать дальше.
+    При обнаружении в локальном хранилище файла, котороге нет в облачном, загружает его.
+    В конце пишутся логи в зависимости от кода ответа.
+
+    :param drive: файлы Яндекс диска
+    :param local: локальные файлы
+    """
     if drive.keys() == local.keys():
         return
 
