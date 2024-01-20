@@ -34,5 +34,5 @@ def check(interval: int) -> None:
         context_logger.error('Отсутствует подключение к интернету.')
     except ConnectionRefusedError:
         context_logger.error('Не удалось загрузить данные с сервера.')
-    finally:
-        sleep(interval)
+
+    sleep(interval)
