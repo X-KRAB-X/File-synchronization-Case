@@ -8,7 +8,7 @@ import logs.logs
 
 if __name__ == '__main__':
     if INTERVAL < 0:
-        logs.logs.context_logger('Ошибка! Интервал должен быть больше 0.')
+        logs.logs.context_logger.error('Ошибка! Интервал должен быть больше 0.')
         time.sleep(5)
         exit()
     logs.logs.context_logger.info(f'Программа синхронизации файлов начинает работу с директорией {FILE_PATH}')
