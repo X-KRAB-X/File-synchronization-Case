@@ -1,7 +1,9 @@
 """Файл для получения файлов и их хеш-сумм из облачного хранилища."""
 
 import requests
+import time
 from config_data.config import TOKEN, DISK_PATH
+from logs.logs import context_logger
 
 
 def get_info() -> dict | int:
@@ -17,9 +19,13 @@ def get_info() -> dict | int:
                                      'Authorization': TOKEN}
                             )
     if response.status_code == 404:
-        exit('Ошибка! Указаная папка не найдена на Яндекс Диске.')
+        context_logger.error('Ошибка! Указаная папка не найдена на Яндекс Диске.')
+        time.sleep(5)
+        exit()
     elif response.status_code == 401:
-        exit('Ошибка! Неверно указан токен.')
+        context_logger.error('Ошибка! Неверно указан токен.')
+        time.sleep(5)
+        exit()
 
     response = response.json()
 

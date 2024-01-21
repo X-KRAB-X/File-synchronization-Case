@@ -1,7 +1,9 @@
 """Файл для получения списка файлов в локальном хранилище."""
 
 import os
+import time
 from config_data.config import FILE_PATH
+from logs.logs import context_logger
 
 
 def get_files_list() -> list:
@@ -14,4 +16,6 @@ def get_files_list() -> list:
     try:
         return os.listdir(FILE_PATH)
     except FileNotFoundError:
-        exit('Ошибка! Неправильно указан путь к отслеживаемой папке.')
+        context_logger.error('Ошибка! Неправильно указан путь к отслеживаемой папке.')
+        time.sleep(5)
+        exit()
