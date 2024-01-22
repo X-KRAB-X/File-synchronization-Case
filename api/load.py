@@ -16,8 +16,10 @@ def load(path: str, file_name: str) -> int:
     url = get_url(file_name)
     if url == 404:
         return 404
-
-    file_to_load = open(path, 'rb')
+    try:
+        file_to_load = open(path, 'rb')
+    except FileNotFoundError:
+        return 410
     files = {'file': file_to_load}
 
     response = requests.post(url, files=files)
